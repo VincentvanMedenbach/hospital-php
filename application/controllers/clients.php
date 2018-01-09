@@ -38,5 +38,32 @@ class clients extends CI_Controller
             echo "dit";
         }
     }
+    public function edit()
+    {
+        $data['link'] = basename(uri_string());
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $data['title'] = 'Edit a client';
+        $this->form_validation->set_rules('client_firstname', 'DOETDITWAT?', 'required');
+        $this->form_validation->set_rules('client_lastname','DOETDITWAT?', 'required');
+        echo $data['link'];
+
+        if ($this->form_validation->run() === FALSE) {
+            echo 'hier is ie';
+            $this->load->view('templates/header' ,$data);
+            $this->load->view('clients/edit', $data);
+
+        } else {
+            echo 'nu doet ie';
+            $this->Client_model->edit_clients($data['link']);
+            $this->load->view('clients/succes', $data);
+        }
+    }
+    public function delete(){
+
+        $this->Client_model->delete_clients(basename(uri_string()));
+        $this->load->view('clients/delete');
+    }
 
 }

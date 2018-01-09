@@ -12,13 +12,12 @@
     </thead>
     </tbody>
     <?php
-    foreach ($clients as $client):
+    foreach ($species as $Speciess):
     ?>
         <tr>
-            <td><?php echo $client->client_firstname?></td>
-            <td><?php echo $client->client_lastname?></td>
-            <td><a href="<?php echo site_url('clients/edit/' . $client->client_id); ?>">Edit</a></td>
-            <td><a href="<?php echo site_url('clients/delete/' . $client->client_id); ?>">x</a></td>
+            <td><?php echo $Speciess->species_description?></td>
+            <td><a href="<?php echo site_url('species/edit/' . $Speciess->species_id); ?>">Edit</a></td>
+            <td><a href="<?php echo site_url('species/delete/' . $Speciess->species_id); ?>">x</a></td>
 <!--            <td>0612345678</td>-->
 <!--            <td>johndoe@hismail.com</td>-->
 <!--            <td class="center"><a href="#">edit</a></td>-->
@@ -27,7 +26,7 @@
     <?php endforeach; ?>
     </tbody>
 </table>
-<p><a href="create">Create</a></p>
+<p><a href="species/create">Create</a></p>
 <!--<p><a href="index.html">Home</a></p>-->
 </body>
 </html>
