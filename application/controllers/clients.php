@@ -8,18 +8,6 @@ class clients extends CI_Controller
         $this->load->helper('url_helper');
     }
 
-    public function view($page = 'home')
-    {
-        if (!file_exists(APPPATH . 'views/clients/' . $page . '.php')) {
-            // Whoops, we don't have a page for that!
-            show_404();
-        }
-
-        $data['title'] = ucfirst($page); // Capitalize the first letter
-        $this->load->view('templates/header', $data);
-        $this->load->view('clients/' . $page, $data);
-//        $this->load->view('templates/footer', $data);
-    }
     public function index()
     {
         $data['clients'] = $this->Client_model->list_clients();
@@ -32,22 +20,23 @@ class clients extends CI_Controller
     {
         $this->load->helper('form');
         $this->load->library('form_validation');
-
+        echo "zo";
         $data['title'] = 'add a new client';
 
-        $this->form_validation->set_rules('client_firstname', 'required');
-        $this->form_validation->set_rules('client_lastname', 'required');
+        $this->form_validation->set_rules('client_firstname', 'DOETDITWAT?', 'required');
+        $this->form_validation->set_rules('client_lastname','DOETDITWAT?', 'required');
 
 
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('templates/header', $data);
             $this->load->view('clients/create');
+            echo "dat";
 
         } else {
             $this->Client_model->set_clients();
-            $this->load->view('clients/create');
+            $this->load->view('clients/succes', $data);
+            echo "dit";
         }
     }
-
 
 }

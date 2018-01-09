@@ -33,6 +33,7 @@ class Client_model extends CI_Model
     public
     function set_clients()
     {
+        echo "setting clients";
         $this->load->helper('url');
         $data = array(
             'client_firstname' => $this->input->post('client_firstname'),
