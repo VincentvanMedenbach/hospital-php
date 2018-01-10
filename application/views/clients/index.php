@@ -17,6 +17,8 @@
         <tr>
             <td><?php echo $client->client_firstname?></td>
             <td><?php echo $client->client_lastname?></td>
+            <td><?php echo $client->client_phone?></td>
+            <td><?php echo $client->client_email?></td>
             <td><a href="<?php echo site_url('clients/edit/' . $client->client_id); ?>">Edit</a></td>
             <td><a href="<?php echo site_url('clients/delete/' . $client->client_id); ?>">x</a></td>
 <!--            <td>0612345678</td>-->

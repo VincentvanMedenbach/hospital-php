@@ -22,7 +22,7 @@ class species extends CI_Controller
         $this->load->library('form_validation');
         $data['title'] = 'add a new species';
 
-        $this->form_validation->set_rules('species_description', 'DOETDITWAT?', 'required');
+        $this->form_validation->set_rules('species_description', 'De description mist?', 'required');
 
 
         if ($this->form_validation->run() === FALSE) {
@@ -41,13 +41,12 @@ class species extends CI_Controller
         $data['link'] = basename(uri_string());
         $this->load->helper('form');
         $this->load->library('form_validation');
-
         $data['title'] = 'Edit a species';
-        $this->form_validation->set_rules('species_description', 'DOETDITWAT?', 'required');
+        $this->form_validation->set_rules('species_description', 'De description mist', 'required');
         echo $data['link'];
-
         if ($this->form_validation->run() === FALSE) {
             echo 'hier is ie';
+            $data['editContent'] = $this->species_Model->get_species($data['link']);
             $this->load->view('templates/header' ,$data);
             $this->load->view('species/edit', $data);
 

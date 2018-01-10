@@ -13,13 +13,14 @@ class Client_model extends CI_Model
             $query = $this->db->get('clients');
             return $query->result_array();
         }
-        $query = $this->db->get('clients', array('client_id' => $client_id));
+        $query = $this->db->get_where('clients', array('client_id' => $client_id));
         return $query->row_array();
     }
 
+
     public function list_clients()
     {
-        $this->db->select('client_firstname,client_lastname,client_id');
+        $this->db->select('client_firstname,client_lastname,client_phone,client_email,client_id');
         $query = $this->db->get('clients');
         $listed = array();
         if ($results = $query->result()) {
@@ -38,6 +39,8 @@ class Client_model extends CI_Model
         $data = array(
             'client_firstname' => $this->input->post('client_firstname'),
             'client_lastname' => $this->input->post('client_lastname'),
+            'client_phone' => $this->input->post('client_phone'),
+            'client_email' => $this->input->post('client_email'),
         );
 
         return $this->db->insert('clients', $data);
@@ -47,6 +50,8 @@ class Client_model extends CI_Model
         $Data = array(
             'client_firstname' => $this->input->post('client_firstname'),
             'client_lastname' => $this->input->post('client_lastname'),
+            'client_phone' => $this->input->post('client_phone'),
+            'client_email' => $this->input->post('client_email'),
             'client_id' => $client_id
         );
         $this->db->where('client_id', $client_id);

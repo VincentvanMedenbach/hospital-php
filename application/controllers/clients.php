@@ -23,9 +23,10 @@ class clients extends CI_Controller
         echo "zo";
         $data['title'] = 'add a new client';
 
-        $this->form_validation->set_rules('client_firstname', 'DOETDITWAT?', 'required');
-        $this->form_validation->set_rules('client_lastname','DOETDITWAT?', 'required');
-
+        $this->form_validation->set_rules('client_firstname', 'Voornaam', 'required');
+        $this->form_validation->set_rules('client_lastname','Achternaam', 'required');
+        $this->form_validation->set_rules('client_phone', 'Phone', 'required');
+        $this->form_validation->set_rules('client_email','Email', 'required');
 
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('templates/header', $data);
@@ -41,15 +42,19 @@ class clients extends CI_Controller
     public function edit()
     {
         $data['link'] = basename(uri_string());
+        $data['editContent'] = $this->Client_model->get_clients($data['link']);
         $this->load->helper('form');
         $this->load->library('form_validation');
 
         $data['title'] = 'Edit a client';
-        $this->form_validation->set_rules('client_firstname', 'DOETDITWAT?', 'required');
-        $this->form_validation->set_rules('client_lastname','DOETDITWAT?', 'required');
+        $this->form_validation->set_rules('client_firstname', 'Voornaam', 'required');
+        $this->form_validation->set_rules('client_lastname','Achternaam', 'required');
+        $this->form_validation->set_rules('client_phone', 'Phone', 'required');
+        $this->form_validation->set_rules('client_email','Email', 'required');
         echo $data['link'];
 
         if ($this->form_validation->run() === FALSE) {
+
             echo 'hier is ie';
             $this->load->view('templates/header' ,$data);
             $this->load->view('clients/edit', $data);

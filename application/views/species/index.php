@@ -1,12 +1,12 @@
 
 <h2>Patiënts</h2>
+
+<h2>Species</h2>
 <table>
     <thead>
     <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Phone</th>
-        <th>Email</th>
+        <th>#</th>
+        <th>Description</th>
         <th colspan="2">Action</th>
     </tr>
     </thead>
@@ -15,6 +15,7 @@
     foreach ($species as $Speciess):
     ?>
         <tr>
+            <td><?php echo $Speciess->species_id ?></td>
             <td><?php echo $Speciess->species_description?></td>
             <td><a href="<?php echo site_url('species/edit/' . $Speciess->species_id); ?>">Edit</a></td>
             <td><a href="<?php echo site_url('species/delete/' . $Speciess->species_id); ?>">x</a></td>

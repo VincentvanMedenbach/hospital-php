@@ -6,6 +6,8 @@
 
 <label for="client_firstname">Voornaam</label><input  name="client_firstname"/><br/>
 <label for="client_lastname">Achternaam</label><input  name="client_lastname"/><br/>
+<label for="client_phone">Phone</label><input  name="client_phone"/><br/>
+<label for="client_email">Email</label><input  name="client_email"/><br/>
 <input type="submit" name="submit" value="Create a client"/>
 
 </form>

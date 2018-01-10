@@ -14,7 +14,7 @@ class Species_model extends CI_Model
             $query = $this->db->get('species');
             return $query->result_array();
         }
-        $query = $this->db->get('species', array('species_id' => $species_id));
+        $query = $this->db->get_where('species', array('species_id' => $species_id));
         return $query->row_array();
     }
 

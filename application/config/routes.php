@@ -7,6 +7,9 @@ $route['delete/(:any)'] = 'clients/delete/$1';
 $route['species/create'] = 'species/create';
 $route['species/edit/(:any)'] = 'species/edit/$1';
 $route['species/delete/(:any)'] = 'species/delete/$1';
+$route['patients/create'] = 'patients/create';
+$route['patients/edit/(:any)'] = 'patients/edit/$1';
+$route['patients/delete/(:any)'] = 'patients/delete/$1';
 
 
 $route['default_controller'] = 'clients';
