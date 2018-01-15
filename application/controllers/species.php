@@ -6,6 +6,10 @@ class species extends CI_Controller
         parent::__construct();
         $this->load->model('species_Model');
         $this->load->helper('url_helper');
+        $this->load->library('javascript');
+        $this->javascript->external();
+        $this->javascript->compile();
+
     }
 
     public function index()

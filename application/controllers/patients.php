@@ -1,4 +1,5 @@
 <?php
+
 class patients extends CI_Controller
 {
     public function __construct()
@@ -8,6 +9,10 @@ class patients extends CI_Controller
         $this->load->model('species_Model');
         $this->load->model('Client_model');
         $this->load->helper('url_helper');
+        $this->load->library('javascript');
+        $this->javascript->external();
+        $this->javascript->compile();
+
     }
 
     public function index()
@@ -16,8 +21,10 @@ class patients extends CI_Controller
         $data['title'] = 'patient archive';
         $this->load->view('templates/header', $data);
         $this->load->view('patients/index', $data);
+
 //        $this->load->view('templates/footer');
     }
+
     public function create()
     {
         $this->load->helper('form');
@@ -28,9 +35,9 @@ class patients extends CI_Controller
         $data['title'] = 'add a new patient';
 
         $this->form_validation->set_rules('patient_name', 'Voornaam', 'required');
-        $this->form_validation->set_rules('species_description','Achternaam', 'required');
+        $this->form_validation->set_rules('species_description', 'Achternaam', 'required');
         $this->form_validation->set_rules('client_firstname', 'Phone', 'required');
-        $this->form_validation->set_rules('patient_status','Status', 'required');
+        $this->form_validation->set_rules('patient_status', 'Status', 'required');
 
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('templates/header', $data);
@@ -43,6 +50,7 @@ class patients extends CI_Controller
             echo "dit";
         }
     }
+
     public function edit()
     {
         $data['link'] = basename(uri_string());
@@ -54,15 +62,15 @@ class patients extends CI_Controller
 
         $data['title'] = 'Edit a patient';
         $this->form_validation->set_rules('patient_name', 'Voornaam', 'required');
-        $this->form_validation->set_rules('species_description','Diersoort', 'required');
+        $this->form_validation->set_rules('species_description', 'Diersoort', 'required');
         $this->form_validation->set_rules('client_firstname', 'Client', 'required');
-        $this->form_validation->set_rules('patient_status','Status', 'required');
+        $this->form_validation->set_rules('patient_status', 'Status', 'required');
         echo $data['link'];
 
         if ($this->form_validation->run() === FALSE) {
 
             echo 'hier is ie';
-            $this->load->view('templates/header' ,$data);
+            $this->load->view('templates/header', $data);
             $this->load->view('patients/edit', $data);
 
         } else {
@@ -71,7 +79,9 @@ class patients extends CI_Controller
             $this->load->view('templates/succes', $data);
         }
     }
-    public function delete(){
+
+    public function delete()
+    {
 
         $this->patient_model->delete_patients(basename(uri_string()));
         $this->load->view('patients/delete');

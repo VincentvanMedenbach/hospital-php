@@ -2,7 +2,7 @@
 <h2>Patiënts</h2>
 
 <h2>Species</h2>
-<table>
+<table id="speciesTable">
     <thead>
     <tr>
         <th>#</th>
@@ -27,6 +27,15 @@
     <?php endforeach; ?>
     </tbody>
 </table>
+<script>
+    $(document).ready(function()
+        {
+            $("#speciesTable").tablesorter();
+        }
+    );
+
+
+</script>
 <p><a href="species/create">Create</a></p>
 <!--<p><a href="index.html">Home</a></p>-->
 </body>

@@ -25,6 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $config['base_url'] = '';
 
+
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -521,3 +522,12 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+
+
+
+//
+//Javascript JQuery en AJAX
+//
+$config['javascript_location'] = 'js/jquery/jquery.js';
+$config['javascript_ajax_img'] = 'images/ajax-loader.gif';
+

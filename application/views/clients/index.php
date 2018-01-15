@@ -1,6 +1,6 @@
 
 <h2>Patiënts</h2>
-<table>
+<table id="patientTable">
     <thead>
     <tr>
         <th>Firstname</th>
@@ -29,6 +29,15 @@
     <?php endforeach; ?>
     </tbody>
 </table>
+<script>
+    $(document).ready(function()
+        {
+            $("#patientTable").tablesorter();
+        }
+    );
+
+
+</script>
 <p><a href="create">Create</a></p>
 <!--<p><a href="index.html">Home</a></p>-->
 </body>

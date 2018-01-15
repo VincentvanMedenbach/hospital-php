@@ -1,4 +1,5 @@
 <?php
+
 class clients extends CI_Controller
 {
     public function __construct()
@@ -6,16 +7,22 @@ class clients extends CI_Controller
         parent::__construct();
         $this->load->model('Client_model');
         $this->load->helper('url_helper');
+        $this->load->library('javascript');
+        $this->javascript->external();
+        $this->javascript->compile();
+
     }
 
     public function index()
     {
+
         $data['clients'] = $this->Client_model->list_clients();
         $data['title'] = 'Client archive';
         $this->load->view('templates/header', $data);
         $this->load->view('clients/index', $data);
 //        $this->load->view('templates/footer');
     }
+
     public function create()
     {
         $this->load->helper('form');
@@ -24,9 +31,9 @@ class clients extends CI_Controller
         $data['title'] = 'add a new client';
 
         $this->form_validation->set_rules('client_firstname', 'Voornaam', 'required');
-        $this->form_validation->set_rules('client_lastname','Achternaam', 'required');
+        $this->form_validation->set_rules('client_lastname', 'Achternaam', 'required');
         $this->form_validation->set_rules('client_phone', 'Phone', 'required');
-        $this->form_validation->set_rules('client_email','Email', 'required');
+        $this->form_validation->set_rules('client_email', 'Email', 'required');
 
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('templates/header', $data);
@@ -39,6 +46,7 @@ class clients extends CI_Controller
             echo "dit";
         }
     }
+
     public function edit()
     {
         $data['link'] = basename(uri_string());
@@ -48,15 +56,15 @@ class clients extends CI_Controller
 
         $data['title'] = 'Edit a client';
         $this->form_validation->set_rules('client_firstname', 'Voornaam', 'required');
-        $this->form_validation->set_rules('client_lastname','Achternaam', 'required');
+        $this->form_validation->set_rules('client_lastname', 'Achternaam', 'required');
         $this->form_validation->set_rules('client_phone', 'Phone', 'required');
-        $this->form_validation->set_rules('client_email','Email', 'required');
+        $this->form_validation->set_rules('client_email', 'Email', 'required');
         echo $data['link'];
 
         if ($this->form_validation->run() === FALSE) {
 
             echo 'hier is ie';
-            $this->load->view('templates/header' ,$data);
+            $this->load->view('templates/header', $data);
             $this->load->view('clients/edit', $data);
 
         } else {
@@ -65,7 +73,9 @@ class clients extends CI_Controller
             $this->load->view('clients/succes', $data);
         }
     }
-    public function delete(){
+
+    public function delete()
+    {
 
         $this->Client_model->delete_clients(basename(uri_string()));
         $this->load->view('clients/delete');
