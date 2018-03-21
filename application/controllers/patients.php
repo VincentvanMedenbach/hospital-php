@@ -62,7 +62,6 @@ class patients extends CI_Controller
         $this->form_validation->set_rules('species_description', 'Diersoort', 'required');
         $this->form_validation->set_rules('client_firstname', 'Client', 'required');
         $this->form_validation->set_rules('patient_status', 'Status', 'required');
-        echo $data['link'];
 
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('templates/header', $data);

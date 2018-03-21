@@ -27,7 +27,6 @@ class clients extends CI_Controller
     {
         $this->load->helper('form');
         $this->load->library('form_validation');
-        echo "zo";
         $data['title'] = 'add a new client';
 
         $this->form_validation->set_rules('client_firstname', 'Voornaam', 'required');
@@ -57,8 +56,6 @@ class clients extends CI_Controller
         $this->form_validation->set_rules('client_lastname', 'Achternaam', 'required');
         $this->form_validation->set_rules('client_phone', 'Phone', 'required');
         $this->form_validation->set_rules('client_email', 'Email', 'required');
-        echo $data['link'];
-
         if ($this->form_validation->run() === FALSE) {
 
             $this->load->view('templates/header', $data);

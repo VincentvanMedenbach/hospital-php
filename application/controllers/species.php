@@ -45,7 +45,6 @@ class species extends CI_Controller
         $this->load->library('form_validation');
         $data['title'] = 'Edit a species';
         $this->form_validation->set_rules('species_description', 'De description mist', 'required');
-        echo $data['link'];
         if ($this->form_validation->run() === FALSE) {
             $data['editContent'] = $this->species_Model->get_species($data['link']);
             $this->load->view('templates/header' ,$data);
