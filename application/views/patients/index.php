@@ -30,6 +30,7 @@
                 $("#patientTable").tablesorter();
             }
         );
+        
 
 
     </script>

@@ -38,12 +38,10 @@ class clients extends CI_Controller
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('templates/header', $data);
             $this->load->view('clients/create');
-            echo "dat";
 
         } else {
             $this->Client_model->set_clients();
             $this->load->view('clients/succes', $data);
-            echo "dit";
         }
     }
 
@@ -63,14 +61,12 @@ class clients extends CI_Controller
 
         if ($this->form_validation->run() === FALSE) {
 
-            echo 'hier is ie';
             $this->load->view('templates/header', $data);
             $this->load->view('clients/edit', $data);
 
         } else {
-            echo 'nu doet ie';
             $this->Client_model->edit_clients($data['link']);
-            $this->load->view('clients/succes', $data);
+            $this->load->view('clients/success', $data);
         }
     }
 

@@ -31,7 +31,6 @@ class patients extends CI_Controller
         $this->load->library('form_validation');
         $data['species'] = $this->species_Model->list_species();
         $data['firstnaam'] = $this->Client_model->list_clients();
-        echo "zo";
         $data['title'] = 'add a new patient';
 
         $this->form_validation->set_rules('patient_name', 'Voornaam', 'required');
@@ -42,12 +41,10 @@ class patients extends CI_Controller
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('templates/header', $data);
             $this->load->view('patients/create');
-            echo "dat";
 
         } else {
             $this->patient_model->set_patients();
             $this->load->view('template/succes', $data);
-            echo "dit";
         }
     }
 
@@ -68,13 +65,10 @@ class patients extends CI_Controller
         echo $data['link'];
 
         if ($this->form_validation->run() === FALSE) {
-
-            echo 'hier is ie';
             $this->load->view('templates/header', $data);
             $this->load->view('patients/edit', $data);
 
         } else {
-            echo 'nu doet ie';
             $this->patient_model->edit_patients($data['link']);
             $this->load->view('templates/succes', $data);
         }

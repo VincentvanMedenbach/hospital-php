@@ -32,12 +32,10 @@ class species extends CI_Controller
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('templates/header', $data);
             $this->load->view('species/create');
-            echo "dat";
 
         } else {
             $this->species_Model->set_species();
             $this->load->view('species/succes', $data);
-            echo "dit";
         }
     }
     public function edit()
@@ -49,13 +47,11 @@ class species extends CI_Controller
         $this->form_validation->set_rules('species_description', 'De description mist', 'required');
         echo $data['link'];
         if ($this->form_validation->run() === FALSE) {
-            echo 'hier is ie';
             $data['editContent'] = $this->species_Model->get_species($data['link']);
             $this->load->view('templates/header' ,$data);
             $this->load->view('species/edit', $data);
 
         } else {
-            echo 'nu doet ie';
             $this->species_Model->edit_species($data['link']);
             $this->load->view('species/succes', $data);
         }
