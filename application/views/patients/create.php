@@ -4,7 +4,7 @@
 
 <?php echo form_open('patients/create'); ?>
 
-<label for="patient_name">Voornaam</label><input name="patient_name">
+<label for="patient_name">Voornaam</label><input name="patient_name" type="text">
 <br/>
 <label for="species_description">species</label>
 <select name="species_description">
@@ -12,7 +12,7 @@
         <option value="<?php echo $Dier->species_description ?>"><?php echo $Dier->species_description ?></option>
     <?php endforeach; ?>
 </select> <br/>
-<label for="patient_status">Status</label><input name="patient_status"><br/>
+<label for="patient_status">Status</label><input name="patient_status" type="text"><br/>
 <label for="client_firstname">naam</label>
 <select name="client_firstname">
     <?php foreach ($firstnaam as $naam): ?>
